@@ -43,6 +43,9 @@ const environmentMap = textureLoader.load(
 environmentMap.mapping = THREE.EquirectangularReflectionMapping;
 environmentMap.colorSpace = THREE.SRGBColorSpace;
 
+// orbitControlで環境マップを拡大できるようにする
+console.log(environmentMap);
+
 scene.background = environmentMap;
 
 const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256, {
@@ -138,7 +141,14 @@ scene.add(camera);
 const controls = new OrbitControls(camera, canvas);
 controls.target.set(0, 1, 0);
 controls.enableDamping = true;
+controls.minDistance = 5;
+controls.maxDistance = 20;
 
+controls.addEventListener("change", () => {
+  const distance = camera.position.distanceTo(floor.position);
+  camera.fov = distance * 5;
+  camera.updateProjectionMatrix();
+});
 /**
  * Renderer
  */
