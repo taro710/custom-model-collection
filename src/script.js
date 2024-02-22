@@ -43,9 +43,6 @@ const environmentMap = textureLoader.load(
 environmentMap.mapping = THREE.EquirectangularReflectionMapping;
 environmentMap.colorSpace = THREE.SRGBColorSpace;
 
-// orbitControlで環境マップを拡大できるようにする
-console.log(environmentMap);
-
 scene.background = environmentMap;
 
 const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256, {

@@ -6,7 +6,7 @@ export default {
     host: true,
   },
   build: {
-    outDir: "../dist",
+    outDir: "../docs",
     emptyOutDir: true,
     sourcemap: true,
   },
